@@ -1,2 +1,11 @@
-upload to github
 finish readme
+
+soiled.py - spec
+
+read soil moisture
+
+calculate current trail conditions
+
+get weather info (mainly percipitation)
+
+predict future trail conditions
