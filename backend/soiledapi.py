@@ -9,8 +9,7 @@ api = Api(app)
 # get data will create dict
 class soiledApi(Resource):
     def get(self):
-        r = get_data()
-        return r.parse().json()
+        return get_data.parse().json()
     
 if __name__ == "__main__":
     api.add_resource(soiledApi)
