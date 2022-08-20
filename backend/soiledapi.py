@@ -6,6 +6,11 @@ import get_data
 app = Flask(__name__)
 api = Api(app)
 
+# get data will create dict
 class soiledApi(Resource):
-    class get(self):
-        help(len)
+    def get(self):
+        r = get_data()
+        return r.parse().json()
+    
+if __name__ == "__main__":
+    api.add_resource(soiledApi)
