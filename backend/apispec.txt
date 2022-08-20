@@ -1,0 +1,5 @@
+to api:
+    GET:
+        get soil data,
+        return json response
+    
