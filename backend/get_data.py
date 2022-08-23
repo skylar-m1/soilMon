@@ -61,7 +61,7 @@ class reader():
             weather = self.getweather()
             # run other functions
             # 
-            return wth
+            return weather
         else:
             pass      
         ''' Example of setting vars
