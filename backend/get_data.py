@@ -56,14 +56,14 @@ class reader():
             d.write(js.json)
             d.close()
 
-    def parse(self, up=False):
-        if up == True:
+    def parse(self, up=None):
+        if up == "true":
             weather = self.getweather()
             # run other functions
             # 
             return weather
         else:
-            pass      
+            return "Hello World!"
         ''' Example of setting vars
         self.moisture = 0.28 # self.moisture = self.read()
         self.current_weather = "Sunny"

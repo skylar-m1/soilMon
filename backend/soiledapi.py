@@ -11,7 +11,7 @@ import get_data
 app = Flask(__name__)
 api = Api(app)
 parser = reqparse.RequestParser()
-parser.add_argument("update", type=bool)
+parser.add_argument("update", type=str)
 
 # api should only be accessible to localhost
 @app.before_request
@@ -23,8 +23,8 @@ def block():
 class soiledApi(Resource):
     def get(self):
         args = parser.parse_args()
-        if args['update'] == True:
-            return get_data.reader().parse(up=True)
+        if args['update'] == 'true':
+            return get_data.reader().parse(up="true")
         else:
             return get_data.reader().parse()
 
@@ -33,6 +33,3 @@ api.add_resource(soiledApi, "/api")
 if __name__ == "__main__":
     pass
     app.run(debug=True)
-
-
-# skylar, implement a get 
