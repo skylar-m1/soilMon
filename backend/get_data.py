@@ -22,6 +22,7 @@ url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s,
 # create readmoisture, getweather, predict functions
 
 class reader():
+
     def getweather(self):
         # query api
         # save relevant weather data into WeatherData
@@ -31,6 +32,19 @@ class reader():
             req = requests.get(url, params={'units':'imperial'})
             res = req.json()
             # return only necessary stuff in json
+            '''psuedo
+            Loop over each hour (limit for 12 hours)
+            get weather description
+            if rain
+             - get precipitation
+
+            '''
+            # will return the id of current weather 
+            currently = res["current"]["weather"][0]["id"]
+            hourly = {}
+            for i in range(12):
+                pass
+            self.wea = {}
             return res
         except Exception as e:
             print("error getting weather data", e)
@@ -44,11 +58,18 @@ class reader():
             "soil_moisture":soilmois,
             "current_weather":wea, ### wea will be a dictionary
             "percipitation":wea,
-            "hourly_forcast":[ # five hours 
+            "hourly_forcast":[ # 12 hours weather description (if rain) rain amount
                 wea,
                 wea, 
                 wea, 
                 wea,
+                wea,
+                wea,
+                wea, 
+                wea, 
+                wea,
+                wea,
+                wea, 
                 wea,
             ]
         }
