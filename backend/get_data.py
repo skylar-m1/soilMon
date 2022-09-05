@@ -64,12 +64,12 @@ class reader():
             "total_percipitation":wea["total_percipitation"]
         }
         with open("data.txt", "w") as d:
-            d.write(json.dumps(js))
+            d.write(json.dumps(js)) # REVIEW ME
             d.close()
         with open("data.txt", "r") as f:
             saved = f.read()
             f.close()
-        return json.loads(saved)
+        return json.loads(saved) # AND ME
 
     def main(self, up=None):
         if up == "true":
