@@ -3,12 +3,8 @@
 #############################
 
 import requests
-
-# I want to limit the api requests to the weather api provider (dos, limited requests)
-'''Possible Solutions
-#1 save last scan time to file
- 
-'''
+import json
+import time
 
 # weather api variables
 latitude = '35.962639'
@@ -23,29 +19,35 @@ url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s,
 
 class reader():
 
+    def convert_time(self, timestamp):
+        # Converts epoch time stamp into 24 hour time
+        return time.strftime("%H", time.localtime(timestamp))
+
     def getweather(self):
-        # query api
-        # save relevant weather data into WeatherData
-        # write file
-        # return WeatherData
         try:
             req = requests.get(url, params={'units':'imperial'})
             res = req.json()
-            # return only necessary stuff in json
-            '''psuedo
-            Loop over each hour (limit for 12 hours)
-            get weather description
-            if rain
-             - get precipitation
-
-            '''
             # will return the id of current weather 
             currently = res["current"]["weather"][0]["id"]
             hourly = {}
+            percipitation = 0
+            # Loop over for each hour
             for i in range(12):
-                pass
-            self.wea = {}
-            return res
+                time = self.convert_time(res["hourly"][i]["dt"])
+                hourly[time] = [res["hourly"][i]["weather"][0]["id"]]
+            
+            # IF there is rain forecasted add the percipitation value
+            if res["hourly"][i]["weather"][0]["main"] == "Rain":
+                hourly[time].append(res["hourly"][i]["rain"]["1h"])
+                percipitation += res["hourly"][i]["rain"]["1h"]
+           
+            # No rain, percipitation 0.0
+            else:
+                hourly[time].append(0.0)
+            percipitation = round(percipitation, 2)
+            self.weather_data =  {"currently":currently,"hourly":[hourly],"total_percipitation":percipitation}
+            return self.weather_data
+        
         except Exception as e:
             print("error getting weather data", e)
     
@@ -54,44 +56,34 @@ class reader():
 
     def create_save(self, wea, soilmois):
         # this function will create the json save file
+        # wea is dictionary passed from get weather
         js = {
-            "soil_moisture":soilmois,
-            "current_weather":wea, ### wea will be a dictionary
-            "percipitation":wea,
-            "hourly_forcast":[ # 12 hours weather description (if rain) rain amount
-                wea,
-                wea, 
-                wea, 
-                wea,
-                wea,
-                wea,
-                wea, 
-                wea, 
-                wea,
-                wea,
-                wea, 
-                wea,
-            ]
+            "soil_moisture":soilmois, 
+            "current_weather":wea["currently"],
+            "hourly_forcast":wea["hourly"], 
+            "total_percipitation":wea["total_percipitation"]
         }
         with open("data.txt", "w") as d:
-            d.write(js.json)
+            d.write(json.dumps(js))
             d.close()
+        with open("data.txt", "r") as f:
+            saved = f.read()
+            f.close()
+        return json.loads(saved)
 
-    def parse(self, up=None):
+    def main(self, up=None):
         if up == "true":
             weather = self.getweather()
-            # run other functions
-            # 
-            return weather
+            soil = 65 # hardcoded soil for now
+            # create save
+            resp = self.create_save(weather, soil)
+            return resp
         else:
-            return "Hello World!"
-        ''' Example of setting vars
-        self.moisture = 0.28 # self.moisture = self.read()
-        self.current_weather = "Sunny"
-        self.forecast = "Sunny"
-        self.data = {"moisture":self.moisture, "currenlty":self.current_weather, "forecast":self.forecast}
-        return self.data
-        '''
+            # Reuse data from save file
+            with open("data.txt", "r") as f:
+                d = json.loads(f.read())
+                f.close()
+            return a
+
+
 #print(time.strftime("%I", time.localtime()))
-
-
