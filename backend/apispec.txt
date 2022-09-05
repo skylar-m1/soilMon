@@ -3,3 +3,17 @@ to api:
         get soil data,
         return json response
     
+
+In the future, add an alert section in api response for extreme weather
+"alerts":[
+      {
+         "sender_name":"NWS Knoxville (Eastern Tennessee)",
+         "event":"Flood Watch",
+         "start":1662317400,
+         "end":1662422400,
+         "description":"...FLOOD WATCH REMAINS IN EFFECT THROUGH MONDAY EVENING...\n* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n* WHERE...Portions of southwest North Carolina, including the\nfollowing areas, Cherokee and Clay. Portions of east Tennessee,\nincluding the following areas, Anderson, Bledsoe, Blount Smoky\nMountains, Bradley, Campbell, Claiborne, East Polk, Grainger,\nHamilton, Jefferson, Knox, Loudon, Marion, McMinn, Meigs, Morgan,\nNorth Sevier, Northwest Blount, Northwest Monroe, Rhea, Roane,\nScott TN, Sequatchie, Sevier Smoky Mountains, Southeast Monroe,\nUnion and West Polk.\n* WHEN...Through Monday evening.\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n* ADDITIONAL DETAILS...\n- Periods of heavy rainfall are expected through Monday, which\nmay result in flooding. Widespread rain amounts through\nMonday are expected to average between 1 and 2 inches of\nadditional rainfall, with locally higher amounts.\n- http://www.weather.gov/safety/flood",
+         "tags":[
+            "Flood"
+         ]
+      }
+   ]
