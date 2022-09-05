@@ -24,9 +24,9 @@ class soiledApi(Resource):
     def get(self):
         args = parser.parse_args()
         if args['update'] == 'true':
-            return get_data.reader().parse(up="true")
+            return get_data.reader().main(up="true")
         else:
-            return get_data.reader().parse()
+            return get_data.reader().main()
 
     
 api.add_resource(soiledApi, "/api")
