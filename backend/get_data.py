@@ -83,7 +83,7 @@ class reader():
             with open("data.txt", "r") as f:
                 d = json.loads(f.read())
                 f.close()
-            return a
+            return d
 
 
 #print(time.strftime("%I", time.localtime()))
