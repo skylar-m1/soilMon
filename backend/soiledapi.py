@@ -12,7 +12,7 @@ app = Flask(__name__)
 api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument("update", type=str)
-
+# test
 # api should only be accessible to localhost
 @app.before_request
 def block():
