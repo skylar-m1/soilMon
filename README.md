@@ -5,9 +5,9 @@ Created by Skylar McDermott
 
 ## Motivation
 
-Over the summer of 2022, I spent much of my free time outdoors hiking and (most of all) mountain biking the amazing trails of the Knoxville Urban Wilderness.
+Over the summer of 2022, I spent alot of time outdoors hiking and (most of all) mountain biking the trails of the Knoxville Urban Wilderness.
 
-*However*
+*However,*
 
 What I soon came to learn is that when it would rain, my favorite riding location would be unusable days after all of the other locations would be ready to ride. So why not build something to keep me updated on the wetness of the trails! Enter, ```soiled```.
 
@@ -36,7 +36,7 @@ pip3 install -r requirements.txt
 ```
 ## Usage
 
-*With hardware connected*
+*With hardware connected, on rpi*
 ```bash
-./soiled.py
+./start
 ```
