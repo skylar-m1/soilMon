@@ -28,7 +28,7 @@ With virtual environment:
 ```bash
 python3 -m venv env
 source env/bin/activate
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 Without:
 ```bash
@@ -38,5 +38,6 @@ pip3 install -r requirements.txt
 
 *With hardware connected, on rpi*
 ```bash
+cd soiled
 ./start
 ```
