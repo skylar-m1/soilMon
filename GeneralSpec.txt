@@ -1,0 +1,5 @@
+Design
+- Solar power, with battery pack
+ - grove power save switch (reduce power)
+- 4G LTE connection
+ - 4G Dongle
