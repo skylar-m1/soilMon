@@ -10,7 +10,7 @@ import time
 latitude = '35.962639'
 longitude ='-83.916718'
 exclude = ['minutely','daily']
-with open('backend/key.txt', 'r') as f: # API key stored in file
+with open('key.txt', 'r') as f: # API key stored in file
     WEATHER_API_KEY = f.read()
 url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s,%s&appid=%s" % (latitude, longitude, exclude[0],exclude[1], WEATHER_API_KEY)
 
@@ -40,12 +40,16 @@ class reader():
             if res["hourly"][i]["weather"][0]["main"] == "Rain":
                 hourly[time].append(res["hourly"][i]["rain"]["1h"])
                 percipitation += res["hourly"][i]["rain"]["1h"]
-           
             # No rain, percipitation 0.0
             else:
                 hourly[time].append(0.0)
+            if res["alerts"]:
+                warn = {"name":res["alerts"][0]["event"], "desc":res["alerts"][0]["event"]}
+            else:
+                warn = ""
             percipitation = round(percipitation, 2)
-            self.weather_data =  {"currently":currently,"hourly":[hourly],"total_percipitation":percipitation}
+
+            self.weather_data =  {"currently":currently,"hourly":[hourly],"total_percipitation":percipitation, "alerts":[warn]}
             return self.weather_data
         
         except Exception as e:
@@ -61,7 +65,8 @@ class reader():
             "soil_moisture":soilmois, 
             "current_weather":wea["currently"],
             "hourly_forcast":wea["hourly"], 
-            "total_percipitation":wea["total_percipitation"]
+            "total_percipitation":wea["total_percipitation"],
+            "alerts":wea["alerts"]
         }
         with open("data.txt", "w") as d:
             d.write(json.dumps(js)) # REVIEW ME
