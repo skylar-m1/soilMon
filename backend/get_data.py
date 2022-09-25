@@ -79,7 +79,7 @@ class reader():
     def main(self, up=None):
         if up == "true":
             weather = self.getweather()
-            soil = 65 # hardcoded soil for now
+            soil = 650 # hardcoded soil for now
             # create save
             resp = self.create_save(weather, soil)
             return resp
