@@ -1,0 +1,7 @@
+1/2/23 Commit
+- tweaked slightly: apispec, frontendspec
+- DELETED soiledapi.py 
+    - the backend no longer will be an api, rather a timed script that creates a save file that the front end will use
+    - changed get_data accordingly 
+- MOVED data.txt to project main and UPDATED get_data 
+- ADDED frontend boilerplates and began styling and creating site
