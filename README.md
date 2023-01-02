@@ -42,10 +42,15 @@ One possible flaw of this, however, is speed. I do not know how latent the 4G co
 
 ## Usage
 
-*With hardware connected, on rpi*
+*With hardware connected, on rpi run*
 ```bash
 cd soiled
 # if venv is activated, otherwise run source env/bin/activate
 ./start
 ```
 
+# Specifications
+
+The project has two main components. The "backend" and the "frontend". The backend retrieves all of the data (soil conditions, weather, etc.) and creates a save file every hour. The frontend uses this save file, and displays the data in a pretty user-friendly format (graphs, colored, easy to read).
+
+The backend schedule will be managed via a cron job on the raspberry pi.

@@ -1,5 +1,3 @@
-
-api will return the id of the weather, so the front end will have to know all of the 
-id's and what they mean in a dictionary
-api will return the hourly time in a 24 hour format, front end will have to check this to
+front end will have to know all of the id's and what they mean in a dictionary
+save file will contain the hourly time in a 24 hour format, front end will have to check this to
 know AM or PM and display the time in a 12 hour format

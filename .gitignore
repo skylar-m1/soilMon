@@ -4,3 +4,4 @@ backend/data.txt
 backend/__pycache__/
 .DS_Store/
 backend/.DS_Store
+frontend/.DS_Store/

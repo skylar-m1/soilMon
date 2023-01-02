@@ -1,7 +1,7 @@
 # soiled
 # Created by Skylar McDermott
 #############################
-
+# This script will be executed via a cron job every hour on the rpi
 import requests
 import json
 import time
@@ -15,8 +15,7 @@ with open('key.txt', 'r') as f: # API key stored in file
 url = "https://api.openweathermap.org/data/2.5/onecall?lat=%s&lon=%s&exclude=%s,%s&appid=%s" % (latitude, longitude, exclude[0],exclude[1], WEATHER_API_KEY)
 
 
-# create readmoisture, getweather, predict functions
-
+# Reader class holds functionality
 class reader():
 
     def convert_time(self, timestamp):
@@ -55,7 +54,7 @@ class reader():
         except Exception as e:
             print("error getting weather data", e)
     
-    def readmoisture(self):
+    def readmoisture(self): # TO-DO
         pass
 
     def create_save(self, wea, soilmois):
@@ -68,27 +67,19 @@ class reader():
             "total_percipitation":wea["total_percipitation"],
             "alerts":wea["alerts"]
         }
-        with open("data.txt", "w") as d:
+        with open("../data.txt", "w") as d:
             d.write(json.dumps(js)) # REVIEW ME
             d.close()
-        with open("data.txt", "r") as f:
+        with open("../data.txt", "r") as f:
             saved = f.read()
             f.close()
         return json.loads(saved) # AND ME
 
-    def main(self, up=None):
-        if up == "true":
-            weather = self.getweather()
-            soil = 650 # hardcoded soil for now
-            # create save
-            resp = self.create_save(weather, soil)
-            return resp
-        else:
-            # Reuse data from save file
-            with open("data.txt", "r") as f:
-                d = json.loads(f.read())
-                f.close()
-            return d
+    def main(self):
+        # Runs all of the funcitons and creates save file
+        weather = self.getweather()
+        soil = 650 # hardcoded soil for now
+        # create save
+        resp = self.create_save(weather, soil)
 
 
-#print(time.strftime("%I", time.localtime()))

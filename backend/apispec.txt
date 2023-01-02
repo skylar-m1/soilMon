@@ -1,5 +1,5 @@
 
-In the future, add an alert section in api response for extreme weather
+In the future, add an alert section in save file for extreme weather
 "alerts":[
       {
          "sender_name":"NWS Knoxville (Eastern Tennessee)",

@@ -1,0 +1,26 @@
+.ctext{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-size: large;
+    padding: 6px;
+}
+
+.alert-pad{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.header-pad
+{
+    padding: 5px;
+}
+
+.col-centered{
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    display: flex;
+    text-justify: auto;
+}
