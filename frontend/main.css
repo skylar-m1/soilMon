@@ -24,3 +24,10 @@
     display: flex;
     text-justify: auto;
 }
+
+.status {
+    font-family:monospace;
+    color:rgb(62, 182, 7);
+    font-size:40px;
+}
+
