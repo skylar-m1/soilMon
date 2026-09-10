@@ -1,4 +1,4 @@
-# soiled
+# soilMon
 A soil monitoring system that tracks hiking and biking trail conditions.
 
 Created by Skylar McDermott
@@ -9,7 +9,7 @@ Over the summer of 2022, I spent alot of time outdoors hiking and (most of all) 
 
 *However,*
 
-What I soon came to learn is that when it would rain, my favorite riding location would be unusable days after all of the other locations would be ready to ride. So why not build something to keep me updated on the wetness of the trails! Enter, soiled.
+What I soon came to learn is that when it would rain, my favorite riding location would be unusable days after all of the other locations would be ready to ride. So why not build something to keep me updated on the wetness of the trails! Enter, soilMon.
 
 Okay so *maybe* I could just remember the last time it rained and plan a visit a few days in advance. But where's the fun in that?
 ## Project status
@@ -21,8 +21,8 @@ Okay so *maybe* I could just remember the last time it rained and plan a visit a
 
 Use git clone: 
 ```bash
-git clone "https://github.com/skylar-m1/soiled/"
-chmod +x soiled/*
+git clone "https://github.com/skylar-m1/soilMon/"
+chmod +x soilMon/*
 ```
 With virtual environment:
 ```bash
@@ -44,7 +44,7 @@ One possible flaw of this, however, is speed. I do not know how latent the 4G co
 
 *With hardware connected, on rpi run*
 ```bash
-cd soiled
+cd soilMon
 # if venv is activated, otherwise run source env/bin/activate
 ./start
 ```
