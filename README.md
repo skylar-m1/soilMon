@@ -14,7 +14,7 @@ What I soon came to learn is that when it would rain, my favorite riding locatio
 Okay so *maybe* I could just remember the last time it rained and plan a visit a few days in advance. But where's the fun in that?
 ## Project status
 
-*Early development phase (active)*
+* abandoned for now to pursue other projects *
 
 
 ## Installation
